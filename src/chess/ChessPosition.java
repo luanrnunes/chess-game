@@ -8,9 +8,8 @@ public class ChessPosition {
 	private int row;
 	
 	public ChessPosition(char column, int row) {
-		if (column < 'a' || column >'h' || row < 1 || row > 8)
-		{
-			throw new ChessException("Erro de posicao, valide o valor inserido");
+		if (column < 'a' || column > 'h' || row < 1 || row > 8) {
+			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8.");
 		}
 		this.column = column;
 		this.row = row;
@@ -20,10 +19,10 @@ public class ChessPosition {
 		return column;
 	}
 
-	public void setColumn(char column) {
-		this.column = column;
+	public int getRow() {
+		return row;
 	}
-	
+
 	protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
@@ -33,10 +32,7 @@ public class ChessPosition {
 	}
 	
 	@Override
-	/*Aspas pra forcar o compilador a reconhecer como string*/
 	public String toString() {
 		return "" + column + row;
 	}
-	
-
 }
